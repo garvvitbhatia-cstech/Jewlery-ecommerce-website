@@ -1,0 +1,315 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="page-heading">
+
+  <div class="page-title">
+
+    <div class="row">
+
+      <div class="col-12 col-md-6 order-md-1 order-last">
+
+        <h3>Edit Customer</h3>
+
+      </div>
+
+      <div class="col-12 col-md-6 order-md-2 order-first">
+
+        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+
+          <ol class="breadcrumb">
+
+            <li class="breadcrumb-item"><a href="<?php echo e(url('/admin')); ?>">Dashboard</a></li>
+
+            <li class="breadcrumb-item"><a href="<?php echo e(url('/admin/users')); ?>">Customers</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">Edit Customer</li>
+
+          </ol>
+
+        </nav>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="section">
+
+    <form class="form w-100" id="pageForm" action="#">
+
+      <div class="row">
+
+        <div class="col-9 col-md-9">
+
+          <div class="card">
+
+            <div class="card-body">
+
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item" role="presentation"> <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home"
+
+                                                    role="tab" aria-controls="home" aria-selected="true">General Info</a> </li>
+
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="description-tab" data-bs-toggle="tab" href="#address"
+
+                                                    role="tab" aria-controls="address" aria-selected="false">Address Info</a> </li>
+
+              </ul>
+
+              <hr />
+
+              <div class="tab-content mt-5" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                  <div class="row">
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Name</label>
+
+                        <input type="text" class="form-control" placeholder="Enter Name" value="<?php echo e($rowData->name); ?>" name="name" id="name">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Email Address</label>
+
+                        <input type="text" class="form-control" placeholder="Enter Email" value="<?php echo e($rowData->email); ?>" name="email" id="email">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Password</label>
+
+                        <input type="password" class="form-control" placeholder="Enter Password" value="" name="password" id="password">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Mobile</label>
+
+                        <input type="text" class="numberonly form-control" maxlength="10" placeholder="Enter Mobile" value="<?php echo e($rowData->mobile); ?>" name="mobile" id="mobile">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Gender</label>
+
+                        <select class="form-select" value="" name="gender" id="gender">
+
+                          <option <?php if($rowData->gender == 'Male'): ?> selected='selected' <?php endif; ?> value="Male">Male</option>
+
+                          <option <?php if($rowData->gender == 'Female'): ?> selected='selected' <?php endif; ?> value="Female">Female</option>
+
+                          <option <?php if($rowData->gender == 'Other'): ?> selected='selected' <?php endif; ?> value="Other">Other</option>
+
+                        </select>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Profile Image</label>
+
+                        <input type="file" class="form-control" name="profile_image" id="profile_image" accept="image/*">
+
+                        <input type="hidden" name="old_profile_image" value="<?php echo $rowData->photo; ?>" />
+
+                      </div>
+
+                    </div>
+
+                    <?php if($rowData->photo != ""): ?>
+
+                    <div class="col-md-2">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">&nbsp;</label>
+
+                        <img src="<?php echo e(URL::asset('public/img/users/')); ?>/<?php echo $rowData->photo; ?>"  style="max-width: 80px;height: auto;"> </div>
+
+                    </div>
+
+                    <?php endif; ?>
+
+                    </div>
+
+                     
+
+                </div>
+
+                 
+
+                <div class="tab-pane fade " id="address" role="tabpanel" aria-labelledby="address-tab">
+
+                  <div class="row">
+
+                    <div class="col-md-12">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Address</label>
+
+                        <input type="text" class="form-control" placeholder="Enter Address" value="<?php echo e($rowData->address); ?>" name="address" id="address">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">City</label>
+
+                        <input type="text" class="form-control" placeholder="Enter City" value="<?php echo e($rowData->city); ?>" name="city" id="city">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">State</label>
+
+                        <input type="text" class="form-control" placeholder="Enter State" value="<?php echo e($rowData->state); ?>" name="state" id="state">
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Country</label>
+
+                        <select name="country" id="country" class="form-select">
+
+                          <option value="">Select Country</option>
+
+                                <?php $__currentLoopData = $country_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option <?php echo e($country->id == $rowData->country?'selected':''); ?> value="<?php echo e($country->id); ?>"><?php echo e($country->country_name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                        </select>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                      <div class="form-group">
+
+                        <label for="basicInput">Zipcode</label>
+
+                        <input type="text" class="numberonly form-control" maxlength="6" placeholder="Enter Zipcode" value="<?php echo e($rowData->zipcode); ?>" name="zipcode" id="zipcode">
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-3 col-md-3 ">
+
+          <div class="card">
+
+            <div class="col-md-12">
+
+              <div class="text-left  p-3 p-l-20"> 
+
+                <!--begin::Submit button-->
+
+                <button type="button" id="form_submit" class="btn btn-sm btn-primary fw-bolder me-3 my-2"> <span class="indicator-label" id="formSubmit">Submit</span> <span class="indicator-progress d-none">Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span> </span> </button>
+
+                <!--end::Submit button--> 
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div> 
+
+    </form>
+
+  </section>
+
+</div>
+
+<!-- end plugin js --> 
+
+<script>
+
+    $(document).ready(function () {
+
+		$('.numberonly').keypress(function(e){
+
+			var charCode = (e.which) ? e.which : event.keyCode
+
+			if(String.fromCharCode(charCode).match(/[^0-9+]/g))
+
+			return false;
+
+		});
+
+    });
+
+    let saveDataURL = "<?php echo e(url('/admin/edit-user/'.$row_id)); ?>";
+
+    let returnURL = "<?php echo e(url('/admin/users')); ?>";
+
+</script> 
+
+<script src="<?php echo e(asset('public/admin/js/pages/users/edit-page.js')); ?>"></script> 
+
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('layout.admin.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/vqtxcve1uvhl/sgj.365wah.com/resources/views//admin/users/edit-page.blade.php ENDPATH**/ ?>

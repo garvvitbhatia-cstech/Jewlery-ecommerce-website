@@ -1,0 +1,113 @@
+<?php $__env->startSection('content'); ?>
+<div class="page-heading">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-12 col-md-6 order-md-1 order-last">
+        <h3>Edit Testimonial</h3>
+      </div>
+      <div class="col-12 col-md-6 order-md-2 order-first">
+        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo e(url('/admin')); ?>">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo e(url('/admin/testimonials')); ?>">Testimonials</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Testimonial</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <form class="form w-100" id="pageForm" action="#">
+      <div class="row">
+        <div class="col-9 col-md-9">
+          <div class="card">
+            <div class="card-body">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation"> <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home"
+                                                    role="tab" aria-controls="home" aria-selected="true">General Info</a> </li>               
+              </ul>
+              <hr />
+              <div class="tab-content mt-5" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="row">
+                  <div class="col-md-5">
+                      <div class="form-group">
+                        <label for="basicInput">Title</label>
+                        <input type="text" class="form-control" placeholder="Enter Title" value="<?php echo $rowData->title; ?>" name="title" id="title">
+                      </div>
+                    </div> 
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="basicInput">User Name</label>
+                        <input type="text" class="form-control" placeholder="Enter User Name" value="<?php echo $rowData->user_name; ?>" name="user_name" id="user_name">
+                      </div>
+                    </div> 
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="basicInput">Rating</label>
+                        <select name="rating" id="rating" class="form-select">
+                          <option <?php echo e($rowData->rating == 1?'selected':''); ?> value="1">1 Star</option>
+                          <option <?php echo e($rowData->rating == 2?'selected':''); ?> value="2">2 Star</option>
+                          <option <?php echo e($rowData->rating == 3?'selected':''); ?> value="3">3 Star</option>
+                          <option <?php echo e($rowData->rating == 4?'selected':''); ?> value="4">4 Star</option>
+                          <option <?php echo e($rowData->rating == 5?'selected':''); ?> value="5">5 Star</option>
+                        </select>
+                      </div>
+                    </div>  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="basicInput">User Icon Image</label>
+                        <input type="file" class="form-control" placeholder="Enter Title" value="" name="profile" id="profile">
+                      </div>
+                    </div> 
+                    <?php if($rowData->profile != ""): ?>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="basicInput">&nbsp;</label>
+                        <img src="<?php echo e(URL::asset('public/admin/images/testimonials/')); ?>/<?php echo $rowData->profile; ?>" style="max-width: 80px;height: auto;"> 
+                      </div>
+                    </div>
+                    <?php endif; ?> 
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="basicInput">Testimonial</label>
+                        <textarea class="form-control" name="testimonial" rows="6" placeholder="Testimonial" id="testimonial"><?php echo $rowData->testimonial; ?></textarea>
+                      </div>
+                    </div>
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-md-3 ">
+          <div class="card">
+            <div class="col-md-12">
+              <div class="text-left  p-3 p-l-20"> 
+                <!--begin::Submit button-->
+                <button type="button" id="form_submit" class="btn btn-sm btn-primary fw-bolder me-3 my-2"> <span class="indicator-label" id="formSubmit">Submit</span> <span class="indicator-progress d-none">Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span> </span> </button>
+                <!--end::Submit button--> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </form>
+  </section>
+</div>
+<!-- end plugin js -->
+<script>
+    $(document).ready(function(){ 
+		$('.numberonly').keypress(function(e){
+			var charCode = (e.which) ? e.which : event.keyCode
+			if(String.fromCharCode(charCode).match(/[^0-9+]/g))
+				return false;
+		});
+    });
+    let saveDataURL = "<?php echo e(url('/admin/edit-testimonial/'.$row_id)); ?>";
+    let returnURL = "<?php echo e(url('/admin/testimonials')); ?>";
+</script>
+<script src="<?php echo e(asset('public/admin/js/pages/testimonials/add-page.js')); ?>"></script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.admin.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/a6xnk0irt52m/public_html/resources/views//admin/testimonials/edit-page.blade.php ENDPATH**/ ?>

@@ -1,0 +1,1 @@
+<?php /**PATH /home/a6xnk0irt52m/public_html/resources/views//checkout/order_thanks.blade.php ENDPATH**/ ?>
